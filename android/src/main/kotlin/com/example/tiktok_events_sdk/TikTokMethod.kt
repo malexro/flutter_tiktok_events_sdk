@@ -18,7 +18,7 @@ object TikTokMethodName {
     const val SEND_EVENT: String = "sendEvent"
     const val SEND_CUSTOM_EVENT: String = "sendCustomEvent"
     const val LOGOUT: String = "logout"
-    const val INIT_TRACK: String = "initTrack"
+    const val START_TRACK: String = "startTrack"
 }
 
 sealed class TikTokMethod(
@@ -174,8 +174,8 @@ sealed class TikTokMethod(
         }
     }
 
-  object InitTracK : TikTokMethod(
-        type = TikTokMethodName.INIT_TRACK
+  object StartTrack : TikTokMethod(
+        type = TikTokMethodName.START_TRACK
     ) {
         override fun call(
             context: Context,
@@ -184,8 +184,8 @@ sealed class TikTokMethod(
             exception: Exception?
         ) {
             try {
-                TikTokBusinessSdk.initTrack()
-                result.success("TikTok SDK initTrack!")
+                TikTokBusinessSdk.startTrack()
+                result.success("TikTok SDK startTrack!")
             } catch (e: Exception) {
                 result.emitError("Erro durante a inicialização do TikTok SDK: ${e.message}")
             }
@@ -197,7 +197,7 @@ sealed class TikTokMethod(
             Identify,
             SendEvent,
             Logout,
-            InitTrack,
+            StartTrack,
         ).firstOrNull { it.type == type }
     }
 }
