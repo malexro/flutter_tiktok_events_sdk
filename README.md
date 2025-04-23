@@ -132,6 +132,8 @@ await TikTokEventsSdk.initSdk(
   androidOptions: androidOptions,
   iosOptions: iosOptions,
 );
+
+await TikTokEventsSdk.startTrack();
 ```
 
 ### Identify a User
