@@ -93,6 +93,11 @@ class TikTokEventsSdk {
     return TiktokEventsSdkPlatform.instance.logout();
   }
 
+  /// Logs initTrack
+  static Future<void> initTrack() async {
+    return TiktokEventsSdkPlatform.instance.initTrack();
+  }
+
   /// Logs a custom event.
   ///
   /// - [event]: The event to log.

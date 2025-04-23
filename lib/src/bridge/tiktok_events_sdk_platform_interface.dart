@@ -50,6 +50,10 @@ abstract class TiktokEventsSdkPlatform extends PlatformInterface {
     return _instance.logout();
   }
 
+  Future<void> initTrack() async {
+    return _instance.initTrack();
+  }
+
   Future<void> identify({required TikTokIdentifier identifier}) async {
     return _instance.identify(identifier: identifier);
   }

@@ -19,6 +19,7 @@ class _TikTokMethod {
   final identify = 'identify';
   final sendEvent = 'sendEvent';
   final logout = 'logout';
+  final initTrack = 'initTrack';
 }
 
 /// An implementation of [TiktokEventsSdkPlatform] that uses method channels.
@@ -70,6 +71,19 @@ class MethodChannelTiktokEventsSdk extends TiktokEventsSdkPlatform {
     } catch (e, _) {
       throw TikTokException(
         'Failed to logout from TikTok SDK',
+        error: e,
+      );
+    }
+  }
+
+  @override
+  Future<void> initTrack() async {
+    try {
+      await methodChannel.invokeMethod(methodName.initTrack);
+      log('TikTok initTrack successful');
+    } catch (e, _) {
+      throw TikTokException(
+        'Failed to initTrack from TikTok SDK',
         error: e,
       );
     }
